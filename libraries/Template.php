@@ -35,8 +35,8 @@ class Template {
      */
     public function __toString(){
     	extract($this->vars);
-    	chdir(dirname($this->template));
-    	ob_start();
+    	chdir(dirname($this->template)); // Changes PHP's current directory to new directory
+    	ob_start(); // Turn on output buffering
     
     	include basename($this->template);
     

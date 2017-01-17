@@ -16,7 +16,7 @@ class Validator{
 	  *		Validate Email Field
 	  */
 	  public function isValidEmail($email){
-		if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)){ // email validation
 			return true;
 		} else {
 			return false;

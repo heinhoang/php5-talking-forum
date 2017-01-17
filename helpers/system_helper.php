@@ -6,7 +6,7 @@ function redirect($page = FALSE, $message = NULL, $message_type = NULL) {
 	if (is_string ($page)) {
 		$location = $page;
 	} else {
-		$location = $_SERVER ['SCRIPT_NAME'];
+		$location = $_SERVER ['SCRIPT_NAME']; //?
 	}
 
 	//Check For Message
@@ -21,7 +21,7 @@ function redirect($page = FALSE, $message = NULL, $message_type = NULL) {
 	}
 
 	//Redirect
-	header ('Location: '.$location);
+	header ('Location: '.$location); // #
 	exit;
 }
 
@@ -45,7 +45,7 @@ function displayMessage(){
 			}
 		}
 		//Unset Message
-		unset($_SESSION['message'] );
+		unset($_SESSION['message'] ); // #
 		unset($_SESSION['message_type'] );
 	} else {
 		echo '';

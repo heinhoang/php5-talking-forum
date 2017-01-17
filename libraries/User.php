@@ -41,7 +41,7 @@ class User{
 		$allowedExts = array("gif", "jpeg", "jpg", "png");
 		$temp = explode(".", $_FILES["avatar"]["name"]);
 		$extension = end($temp);
-		if ((($_FILES["avatar"]["type"] == "image/gif")
+		if ((($_FILES["avatar"]["type"] == "image/gif") //#
 				|| ($_FILES["avatar"]["type"] == "image/jpeg")
 				|| ($_FILES["avatar"]["type"] == "image/jpg")
 				|| ($_FILES["avatar"]["type"] == "image/pjpeg")
@@ -49,14 +49,14 @@ class User{
 				|| ($_FILES["avatar"]["type"] == "image/png"))
 				&& ($_FILES["avatar"]["size"] < 100000)
 				&& in_array($extension, $allowedExts)) {
-			if ($_FILES["avatar"]["error"] > 0) {
-				redirect('register.php', $_FILES["avatar"]["error"], 'error');
+			if ($_FILES["avatar"]["error"] > 0) { //#
+				redirect('register.php', $_FILES["avatar"]["error"], 'error'); // use redirect function in system_helper.php to redirect to 'register.php' with error message `$_FILES["avatar"]["error"]`
 			} else {
-				if (file_exists("images/avatars/" . $_FILES["avatar"]["name"])) {
+				if (file_exists("images/avatars/" . $_FILES["avatar"]["name"])) { //#
 					redirect('register.php', 'File already exists', 'error');
 				} else {
 					move_uploaded_file($_FILES["avatar"]["tmp_name"],
-					"images/avatars/" . $_FILES["avatar"]["name"]);
+					"images/avatars/" . $_FILES["avatar"]["name"]); // `move_uploaded_file` is a PHP function
 					
 					return true;
 				}
